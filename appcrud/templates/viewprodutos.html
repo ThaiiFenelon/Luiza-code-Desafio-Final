@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body class="text-center">
+    <div class="col-8 m-auto pt-2 pb-2 text-center p-3 mb-2 bg-dark">
+        <h1 style="color:Violet;"> Commit Like a Girl</h1>
+    </div>
+
+    <img class="mb-4" src="https://i.pinimg.com/originals/00/dc/ed/00dced5165457914e6156fff434b6072.jpg" alt="" width="458" height="458">
+    
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Produtos:</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <a href="/homeprodutos" class="btn btn-dark">Voltar</a>
+    </div>
+
+      <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome do Produto</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Empresa</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {% for dbs in db %}
+                <tr>
+                  <th>{{dbs.id}}</th>
+                  <td>{{dbs.Nome_do_Produto}}</td>
+                  <td>{{dbs.Descricao}}</td>
+                  <td>{{dbs.Preco}}</td>
+                  <td>{{dbs.Empresas}}</td>
+                </tr>
+            {% endfor %}
+          
+            <tr>
+          </tbody>
+      </table>     
+  
+</body>
+</html>

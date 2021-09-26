@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Formulário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body class="text-center">
+    <div class="col-8 m-auto pt-2 pb-2 text-center p-3 mb-2 bg-dark">
+        <h1 style="color:Violet;"> Commit Like a Girl</h1>
+    </div>
+
+    <img class="mb-4" src="https://1.bp.blogspot.com/-ja0-tH6-mCg/XUxq3etB1WI/AAAAAAAATnY/b9_IN-BUcmEJS6FQOAGJGBEGTcLI4yw5QCLcBGAs/s640/animecomputerhands_.gif" alt="" width="" height="">
+    
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Cadastro de Produtos:</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <a href="/empresa/{{db.id}}/produtos" class="btn btn-dark">Voltar</a>
+    </div>
+   
+    <div class="col-8 pt-4 pb-2" align="right">
+        <div id="result"></div>
+        
+        <form name="formprodutos" id="formprodutos" action="{% if db %}/updateprodutos/{{db.id}}/{% else %}/createprodutos/{% endif %}" method="post">
+            {% csrf_token %}
+            <div class="formprodutos-group mt-4" align="right">Nome do Produto: {{formprodutos.Nome_do_Produto}}</div>
+            <div class="formprodutos-group mt-4" align="right">Descrição: {{formprodutos.Descricao}}</div>
+            <div class="formprodutos-group mt-4" align="right">Preço: {{formprodutos.Preco}}</div>
+            <br>
+            <input type="submit" class="btn btn-success" value="Cadastar Produto" style="width:33.3%" >
+        </form>
+    </div>
+
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
+</body>
+</html>
