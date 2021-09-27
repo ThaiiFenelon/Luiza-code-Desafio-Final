@@ -1,3 +1,4 @@
+from django.db import models
 from django.shortcuts import render, redirect
 from appcrud.forms import EmpresasForm, ProdutosForm
 from appcrud.models import Empresas, Produtos
@@ -62,15 +63,17 @@ def homeprodutos(request, empresa_id):
 
 def formprodutos(request, empresa_id):
     data = {}
-    data ['formprodutos'] = ProdutosForm()
-    data ['empresa_id'] = empresa_id
+    data['formprodutos'] = ProdutosForm()
+    data['db'] = Produtos.objects.filter(Empresa=empresa_id)
+    data['empresa_id'] = empresa_id
+
     return render (request, 'formprodutos.html', data)
 
-def createprodutos(request):
+def createprodutos(request, empresa_id):
     formprodutos = ProdutosForm(request.POST or None)
     if formprodutos.is_valid():
         formprodutos.save()
-        return redirect('indexprodutos.html')
+        return redirect(request, 'createproducts.html')
 
 def viewprodutos(request, pk):
     data = {}
@@ -103,3 +106,6 @@ def deleteprodutos (request, empresa_id):
     db = Produtos.objects.get(Empresa=empresa_id)
     db.delete()
     return redirect ('indexprodutos.html')
+
+def __str__(self):
+    return str(self)
