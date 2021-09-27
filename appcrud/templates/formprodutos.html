@@ -18,17 +18,18 @@
     </div>
 
     <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/empresa/{{db.id}}/produtos" class="btn btn-dark">Voltar</a>
+        <a href="/empresa/{{empresa_id}}/produtos" class="btn btn-dark">Voltar</a>
     </div>
    
     <div class="col-8 pt-4 pb-2" align="right">
         <div id="result"></div>
         
-        <form name="formprodutos" id="formprodutos" action="{% if db %}/updateprodutos/{{db.id}}/{% else %}/createprodutos/{% endif %}" method="post">
+        <form name="empresa/{{empresa_id}}/produtos" id="empresa/{{empresa_id}}/produtos" action="{% if db %}/updateprodutos/{{db.id}}/{% else %}/empresa/{{ empresa_id }}/produtos/createprodutos{% endif %}" method="post">
             {% csrf_token %}
             <div class="formprodutos-group mt-4" align="right">Nome do Produto: {{formprodutos.Nome_do_Produto}}</div>
             <div class="formprodutos-group mt-4" align="right">Descrição: {{formprodutos.Descricao}}</div>
             <div class="formprodutos-group mt-4" align="right">Preço: {{formprodutos.Preco}}</div>
+            <div class="formprodutos-group mt-4" align="right">Empresa: {{ db.Empresa }}</div>
             <br>
             <input type="submit" class="btn btn-success" value="Cadastar Produto" style="width:33.3%" >
         </form>

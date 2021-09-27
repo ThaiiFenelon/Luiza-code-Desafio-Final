@@ -39,20 +39,20 @@
         form.addEventListener('submit',sendForm,false);
     }
 
-    if(doc.querySelector('#formprodutos')){
+    else if(doc.querySelector('#formprodutos')){
         let formprodutos=doc.querySelector('#formprodutos');
         function sendFormprodutos(event)
         {
             event.preventDefault();
             let data = new FormData(formprodutos);
             let ajax = new XMLHttpRequest();
-            let token = doc.querySelectorAll('input')[0].value;
+            let token = doc.querySelectorAll('inputprodutos')[0].value;
             ajax.open('POST', formprodutos.action);
             ajax.setRequestHeader('X-CSRF-TOKEN',token);
             ajax.onreadystatechange = function()
             {
                 if(ajax.status === 200 && ajax.readyState === 4){
-                    let result = doc.querySelector('#result');
+                    let result = doc.querySelector('#resultprodutos');
                     result.innerHTML = 'Dados incluídos com sucesso!';
                     result.classList.add('alert');
                     result.classList.add('alert-success');
